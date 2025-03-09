@@ -2,11 +2,6 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# Root route to display a message
-@app.route('/')
-def home():
-    return "Flask Microservice for Theme Preferences is Running!"
-
 # Get user preference request
 @app.route('/get_preference', methods=['GET'])
 def get_preference():
@@ -25,6 +20,11 @@ def set_preference():
         return jsonify({"error": "Missing data"}), 400
     
     return jsonify({"user_id": user_id, "theme": theme, "background_color": background_color})
+
+# Root route to display a message
+@app.route('/')
+def home():
+    return "Flask Microservice for Theme Preferences is Running!"
 
 if __name__ == '__main__':
     app.run(debug=True)
