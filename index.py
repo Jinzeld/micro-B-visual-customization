@@ -2,6 +2,11 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+# Root route to display a message
+@app.route('/')
+def home():
+    return "Flask Microservice for Theme Preferences is Running!"
+
 # Get user preference request
 @app.route('/get_preference', methods=['GET'])
 def get_preference():
